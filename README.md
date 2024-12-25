@@ -1,66 +1,225 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Task Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Features
 
-## About Laravel
+User Authentication
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Register: Users can create an account.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Log in: Users can log into their account.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Log out: Users can log out of their account.
 
-## Learning Laravel
+Task Management (CRUD Operations)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Create: Users can add new tasks.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Read: Users can view a list of tasks.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Update: Users can edit existing tasks.
 
-## Laravel Sponsors
+Delete: Users can remove tasks.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Task Filtering and Sorting
 
-### Premium Partners
+Filter: Filter tasks by status (e.g., Pending, In Progress, Completed).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Sort: Sort tasks by due date.
 
-## Contributing
+API Development
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Provides an API for interaction with other applications.
 
-## Code of Conduct
+Installation and Setup
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+To install and set up the project locally, follow these steps:
 
-## Security Vulnerabilities
+Clone the repository:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+git clone https://github.com/ahmadanas01/Task-Management-System.git
 
-## License
+Navigate to the project directory:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+cd project_folder
+
+Install dependencies:
+
+composer install
+npm install
+npm run build
+
+Set up the database:
+
+Create a new database named tms.
+
+Import the tms.sql file  into the database, which is in root directory
+
+t up your environment variables:
+
+cp .env.example .env
+
+Run the application:
+
+php artisan serve
+
+API Usage
+
+Test Login with Postman
+
+Open Postman.
+
+Create a new request with the following details:
+
+Method: POST
+
+URL: http://localhost/api/login (adjust the base URL as per your app setup)
+
+Go to the Body tab and select raw. Choose JSON as the data type.
+
+Provide the login credentials as JSON. For example:
+
+{
+    "email": "user@example.com",
+    "password": "password"
+}
+
+Send the request.
+
+If the login is successful, you'll receive a response like this:
+
+{
+    "token": "your-generated-token",
+}
+
+Using the Token for Authorization
+
+Include the token in subsequent requests as the Authorization header:
+
+Authorization: Bearer your-generated-token
+
+Endpoint for Filtering Tasks by Status
+
+URL: /api/tasks?status={status}
+
+Method: GET
+
+Description: Retrieve tasks filtered by a specific status.
+
+Query Parameters:
+
+status: Accepted values are:
+
+Pending
+
+In Progress
+
+Completed
+
+Authentication: Required (auth:api middleware).
+
+Example Requests:
+
+Get all tasks with status Pending:
+
+GET /api/tasks?status=Pending
+
+Get all tasks with status In Progress:
+
+GET /api/tasks?status=In Progress
+
+Get all tasks with status Completed:
+
+GET /api/tasks?status=Completed
+
+Response: JSON array of tasks matching the specified status.
+
+Task Management Endpoints
+
+1. Get All Tasks
+
+URL: /api/tasks
+
+Method: GET
+
+Description: Retrieve a list of tasks, with optional filtering and sorting.
+
+Query Parameters:
+
+status (optional): Filter tasks by status. Accepted values: Pending, In Progress, Completed.
+
+sort_by (optional): Sort tasks by due date. Accepted values: asc, desc (default: asc).
+
+Authentication: Required (auth:api middleware).
+
+Response: JSON array of tasks.
+
+2. Create a New Task
+
+URL: /api/tasks
+
+Method: POST
+
+Description: Create a new task.
+
+Request Body (JSON):
+
+{
+  "title": "Task title",
+  "description": "Task description",
+  "status": "Pending | In Progress | Completed",
+  "due_date": "YYYY-MM-DD"
+}
+
+Authentication: Required (auth:api middleware).
+
+Response: JSON object of the created task with a 201 Created status.
+
+3. Update an Existing Task
+
+URL: /api/tasks/{task}
+
+Method: PUT
+
+Description: Update an existing task.
+
+Request Parameters:
+
+{task}: ID of the task to update.
+
+Request Body (JSON):
+
+{
+  "title": "Updated title",
+  "description": "Updated description",
+  "status": "Pending | In Progress | Completed",
+  "due_date": "YYYY-MM-DD"
+}
+
+Authentication: Required (auth:api middleware).
+
+Response: JSON object of the updated task.
+
+4. Delete a Task
+
+URL: /api/tasks/{task}
+
+Method: DELETE
+
+Description: Delete a specific task.
+
+Request Parameters:
+
+{task}: ID of the task to delete.
+
+Authentication: Required (auth:api middleware).
+
+Response: Empty response with a 204 No Content status.
+
+Notes:
+
+All endpoints require the user to be authenticated with the auth:api middleware.
+
+The endpoints are protected, and the tasks are scoped to the authenticated user (user_id from Auth::id()).
+
+The index endpoint supports optional query parameters for filtering by status and sorting by due_date.
+

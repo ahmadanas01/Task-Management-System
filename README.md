@@ -61,13 +61,13 @@ Import the tms.sql file  into the database, which is in root directory.
 
 cp .env.example .env
 
-Run the application:
+6. Run the application:
 
 php artisan serve
 
 API Usage
 
-Test Login with Postman
+1. Test Login with Postman
 
 Open Postman.
 
@@ -100,7 +100,7 @@ Include the token in subsequent requests as the Authorization header:
 
 Authorization: Bearer your-generated-token
 
-Endpoint for Filtering Tasks by Status
+2. Endpoint for Filtering Tasks by Status
 
 URL: /api/tasks?status={status}
 
@@ -138,7 +138,7 @@ Response: JSON array of tasks matching the specified status.
 
 Task Management Endpoints
 
-1. Get All Tasks
+3. Get All Tasks
 
 URL: /api/tasks
 
@@ -156,7 +156,7 @@ Authentication: Required (auth:api middleware).
 
 Response: JSON array of tasks.
 
-2. Create a New Task
+4. Create a New Task
 
 URL: /api/tasks
 
@@ -177,7 +177,7 @@ Authentication: Required (auth:api middleware).
 
 Response: JSON object of the created task with a 201 Created status.
 
-3. Update an Existing Task
+5. Update an Existing Task
 
 URL: /api/tasks/{task}
 
@@ -202,7 +202,7 @@ Authentication: Required (auth:api middleware).
 
 Response: JSON object of the updated task.
 
-4. Delete a Task
+6. Delete a Task
 
 URL: /api/tasks/{task}
 

@@ -32,29 +32,32 @@ Provides an API for interaction with other applications.
 
 Installation and Setup
 
-To install and set up the project locally, follow these steps:
+1. To install and set up the project locally, follow these steps:
 
 Clone the repository:
 
 git clone https://github.com/ahmadanas01/Task-Management-System.git
 
-Navigate to the project directory:
+2. Navigate to the project directory:
 
 cd project_folder
 
-Install dependencies:
+3. Install dependencies:
 
 composer install
+
 npm install
+
 npm run build
 
-Set up the database:
+
+4. Set up the database:
 
 Create a new database named tms.
 
-Import the tms.sql file  into the database, which is in root directory
+Import the tms.sql file  into the database, which is in root directory.
 
-t up your environment variables:
+5. Set up your environment variables:
 
 cp .env.example .env
 
